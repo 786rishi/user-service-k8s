@@ -1,0 +1,7 @@
+kubectl apply -f configs.yaml
+kubectl apply -f ingress.yaml
+kubectl apply -f mongo-deployment.yaml
+kubectl apply -f mongo-pvc.yaml
+kubectl apply -f secrets.yaml
+kubectl apply -f user-service-deployment.yaml
+kubectl apply -f user-service-service.yaml
