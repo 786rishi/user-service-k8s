@@ -4,8 +4,8 @@ A Spring Boot microservice for user management with MongoDB integration, designe
 
 ## 🔗 Important Links
 
-- **GitHub Repository**: [https://github.com/786rishi/user-service-k8s/tree/main](https://github.com/786rishi/user-service-k8s/tree/main)
-- **Docker Hub Repository**: [https://hub.docker.com/repository/docker/rishisingh/user-service/general](https://hub.docker.com/repository/docker/rishisingh/user-service/general)
+- **GitHub Repository**: [https://github.com/786rishi/user-service-k8s](https://github.com/786rishi/user-service-k8s)
+- **Docker Hub Repository**: [https://hub.docker.com/repository/docker/rishisingh/user-service](https://hub.docker.com/repository/docker/rishisingh/user-service)
 - **Live API Service**: [http://rishi.com/users](http://rishi.com/users)
 
 ## 🚀 Overview
