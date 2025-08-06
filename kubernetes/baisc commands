@@ -1,7 +1,18 @@
 kubectl apply -f configs.yaml
-kubectl apply -f ingress.yaml
-kubectl apply -f mongo-deployment.yaml
-kubectl apply -f mongo-pvc.yaml
 kubectl apply -f secrets.yaml
+kubectl apply -f mongo-statefulset.yaml
+kubectl apply -f mongo-service.yaml
 kubectl apply -f user-service-deployment.yaml
 kubectl apply -f user-service-service.yaml
+kubectl apply -f ingress.yaml
+
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml
+kubectl get svc -n ingress-nginx
+
+
+kubectl exec -it mongodb-0 -- /bin/bash
+
+mongosh -u appuser -p <password> --authenticationDatabase admin
+use usersdb
+db.users.find().pretty()

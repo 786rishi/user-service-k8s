@@ -1,19 +1,20 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: mongo
+  name: mongodb
 spec:
+  serviceName: "mongo-service"  # Must match the headless service name
   replicas: 1
   selector:
     matchLabels:
-      app: mongo
+      app: mongodb
   template:
     metadata:
       labels:
-        app: mongo
+        app: mongodb
     spec:
       containers:
-        - name: mongo
+        - name: mongodb
           image: mongo:5.0.27
           ports:
             - containerPort: 27017
@@ -29,20 +30,13 @@ spec:
                   name: mongo-secret
                   key: DB_PASSWORD
           volumeMounts:
-            - name: mongo-data
+            - name: mongo-persistent-storage
               mountPath: /data/db
-      volumes:
-        - name: mongo-data
-          persistentVolumeClaim:
-            claimName: mongo-pvc
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mongo-service
-spec:
-  selector:
-    app: mongo
-  ports:
-    - port: 27017
-      targetPort: 27017
+  volumeClaimTemplates:
+    - metadata:
+        name: mongo-persistent-storage
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi

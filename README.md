@@ -4,9 +4,9 @@ A Spring Boot microservice for user management with MongoDB integration, designe
 
 ## 🔗 Important Links
 
-- **GitHub Repository**: [https://github.com/786rishi/user-service-k8s/tree/main](https://github.com/786rishi/user-service-k8s/tree/main)
+- **GitHub Repository**: [https://github.com/786rishi/user-service-k8s](https://github.com/786rishi/user-service-k8s)
 - **Docker Hub Repository**: [https://hub.docker.com/repository/docker/rishisingh/user-service/general](https://hub.docker.com/repository/docker/rishisingh/user-service/general)
-- **Live API Service**: [http://rishi.com/users](http://rishi.com/users)
+- **Live API Service**: [http://34.93.88.163/users](http://34.93.88.163/users)
 
 ## 🚀 Overview
 
@@ -36,7 +36,7 @@ This project provides a RESTful API for user management operations including cre
 
 ### Base URL
 ```
-http://rishi.com/users
+http://34.93.88.163/users
 ```
 
 ### Available Endpoints
@@ -59,12 +59,12 @@ http://rishi.com/users
 
 #### Get All Users
 ```bash
-curl -X GET http://rishi.com/users
+curl -X GET http://34.93.88.163/users
 ```
 
 #### Create a New User
 ```bash
-curl -X POST http://rishi.com/users \
+curl -X POST http://34.93.88.163/users \
   -H "Content-Type: application/json" \
   -d '{
     "name": "John Doe",
@@ -181,18 +181,18 @@ kubectl get services
 
 2. **Deploy to Kubernetes**
    ```bash
-   kubectl apply -f kubernetes/
+   kubectl apply -f configs.yaml
+   kubectl apply -f secrets.yaml
+   kubectl apply -f mongo-statefulset.yaml
+   kubectl apply -f mongo-service.yaml
+   kubectl apply -f user-service-deployment.yaml
+   kubectl apply -f user-service-service.yaml
+   kubectl apply -f ingress.yaml
    ```
-
-## 📊 Monitoring and Health
-
-- **Health Check**: The application includes Spring Boot Actuator endpoints
-- **Scaling**: Horizontal Pod Autoscaler can be configured based on CPU/memory usage
-- **Logging**: Application logs are available through `kubectl logs`
 
 ## 🤝 Contributing
 
-This project is for learning purposes. Feel free to fork, modify, and experiment with the codebase to understand containerization and Kubernetes deployment patterns.
+This project is for learning/demo purposes. Feel free to fork, modify, and experiment with the codebase to understand containerization and Kubernetes deployment patterns.
 
 ## 📄 License
 
